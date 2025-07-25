@@ -109,9 +109,9 @@ button:hover {
 }
 
 .player-count-select {
-    background-color: #ff4757;
+    background-color: #fca311;
     color: white;
-    padding: 10px 20px;
+    padding: 10px 30px 10px 20px;
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -124,7 +124,7 @@ button:hover {
     appearance: none;
     background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
     background-repeat: no-repeat;
-    background-position: right 10px center;
+    background-position: right 15px center;
 }
 
 .player-count-select:hover {

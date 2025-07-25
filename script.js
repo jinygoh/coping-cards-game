@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let playerCount = 4;
     let currentPlayer = 0;
     let scores = [];
+    let drawnCards = [];
     const cardColors = [
         '#ffadad', '#ffd6a5', '#fdffb6', '#caffbf', '#9bf6ff', '#a0c4ff', '#bdb2ff', '#ffc6ff'
     ];
@@ -92,16 +93,26 @@ document.addEventListener('DOMContentLoaded', () => {
         "You are facing a moral dilemma with no clear right answer.",
         "You are responsible for a major mistake at work that has serious consequences.",
         "You are feeling completely alone and have no one to turn to.",
-        "You are forced to make a decision that will cause harm to someone, regardless of what you choose.",
-        "You are living in a war-torn country.",
-        "You have been falsely accused of a crime and are facing prison time.",
-        "You are a refugee who has been forced to flee your home country.",
-        "You are a survivor of a natural disaster and have lost everything.",
-        "You are struggling with a severe mental illness that makes it difficult to function.",
-        "You are a caregiver for a loved one with a terminal illness.",
-        "You are living in extreme poverty and are struggling to meet your basic needs.",
-        "You have been a victim of a violent crime and are struggling with the aftermath.",
-        "You are a member of a marginalized group and are facing systemic oppression."
+        "You are dealing with the grief of losing a loved one.",
+        "You are going through a difficult breakup or divorce.",
+        "You are struggling with infertility or have experienced a miscarriage.",
+        "You are being bullied or harassed at work or school.",
+        "You are dealing with a major financial setback, such as losing your job or having a large unexpected expense.",
+        "You are struggling with a chronic illness that affects your daily life.",
+        "You are a caregiver for a family member with a disability or chronic illness.",
+        "You are struggling with your body image and self-esteem.",
+        "You are feeling lost and unsure about your future.",
+        "You are dealing with a difficult family situation, such as a family conflict or a loved one's addiction.",
+        "You have made a huge mistake that you can't undo.",
+        "You feel like a failure.",
+        "You are struggling with your mental health and feel like you can't talk to anyone about it.",
+        "You are being pressured to do something that goes against your values.",
+        "You are feeling completely burnt out and have no motivation.",
+        "You are dealing with the aftermath of a traumatic event.",
+        "You are feeling isolated and alone, even when you are surrounded by people.",
+        "You are struggling to forgive someone who has hurt you deeply.",
+        "You are facing a major life change that you are not prepared for.",
+        "You are feeling hopeless about the future."
     ];
 
     function showScreen(screen) {
@@ -150,6 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
     buttons.start.addEventListener('click', () => {
         playerCount = parseInt(inputs.playerCount.value);
         scores = new Array(playerCount).fill(0);
+        drawnCards = [];
         currentPlayer = 0;
         updateScores();
         showScreen(screens.game);
@@ -161,7 +173,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     buttons.drawCard.addEventListener('click', () => {
-        const cardIndex = Math.floor(Math.random() * cardDescriptions.length);
+        if (drawnCards.length === cardDescriptions.length) {
+            displays.card.textContent = "All cards have been drawn!";
+            return;
+        }
+
+        let cardIndex;
+        do {
+            cardIndex = Math.floor(Math.random() * cardDescriptions.length);
+        } while (drawnCards.includes(cardIndex));
+
+        drawnCards.push(cardIndex);
+
         const colorIndex = Math.floor(Math.random() * cardColors.length);
         displays.card.textContent = cardDescriptions[cardIndex];
         displays.card.style.backgroundColor = cardColors[colorIndex];

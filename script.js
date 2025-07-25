@@ -91,7 +91,17 @@ document.addEventListener('DOMContentLoaded', () => {
         "You are struggling with addiction.",
         "You are facing a moral dilemma with no clear right answer.",
         "You are responsible for a major mistake at work that has serious consequences.",
-        "You are feeling completely alone and have no one to turn to."
+        "You are feeling completely alone and have no one to turn to.",
+        "You are forced to make a decision that will cause harm to someone, regardless of what you choose.",
+        "You are living in a war-torn country.",
+        "You have been falsely accused of a crime and are facing prison time.",
+        "You are a refugee who has been forced to flee your home country.",
+        "You are a survivor of a natural disaster and have lost everything.",
+        "You are struggling with a severe mental illness that makes it difficult to function.",
+        "You are a caregiver for a loved one with a terminal illness.",
+        "You are living in extreme poverty and are struggling to meet your basic needs.",
+        "You have been a victim of a violent crime and are struggling with the aftermath.",
+        "You are a member of a marginalized group and are facing systemic oppression."
     ];
 
     function showScreen(screen) {

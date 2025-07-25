@@ -153,16 +153,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     buttons.promptOk.addEventListener('click', () => {
         hideModal(modals.prompt);
-        document.getElementById('vote-message').textContent = `Everyone, discuss and vote for the best coping mechanism shared. Decide amongst yourselves who has the best strategy. The player whose coping mechanism is chosen gets 1 point.`;
+        document.getElementById('vote-message').textContent = `Everyone, discuss and vote for the best coping mechanism shared. Decide amongst yourselves who has the best strategy. Click on the player who you've voted for.`;
+        const playerButtons = document.getElementById('player-buttons');
+        playerButtons.innerHTML = '';
+        for (let i = 0; i < playerCount; i++) {
+            const btn = document.createElement('button');
+            btn.textContent = `Player ${i + 1}`;
+            btn.addEventListener('click', () => {
+                scores[i]++;
+                updateScores();
+                hideModal(modals.vote);
+                nextTurn();
+            });
+            playerButtons.appendChild(btn);
+        }
         showModal(modals.vote);
     });
 
-    buttons.voteComplete.addEventListener('click', () => {
-        hideModal(modals.vote);
-        scores[currentPlayer]++;
-        updateScores();
-        nextTurn();
-    });
 
     buttons.playAgain.addEventListener('click', () => {
         showScreen(screens.start);

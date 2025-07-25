@@ -50,7 +50,7 @@ button:hover {
 
 .modal-content {
     background-color: #fefefe;
-    margin: 10% auto;
+    margin: 0 auto;
     padding: 30px;
     border: none;
     border-radius: 15px;
@@ -92,4 +92,8 @@ button:hover {
 
 #score-display {
     margin-top: 20px;
+}
+
+#prompt-modal .modal-content {
+    margin-top: 350px;
 }

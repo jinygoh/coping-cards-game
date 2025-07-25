@@ -37,8 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let playerCount = 4;
     let currentPlayer = 0;
     let scores = [];
-    let rounds = 5;
-    let currentRound = 0;
+    const cardColors = [
+        '#ffadad', '#ffd6a5', '#fdffb6', '#caffbf', '#9bf6ff', '#a0c4ff', '#bdb2ff', '#ffc6ff'
+    ];
 
     const cardDescriptions = [
         "You accidentally send a very embarrassing message to your boss.",
@@ -80,7 +81,17 @@ document.addEventListener('DOMContentLoaded', () => {
         "You're feeling like you're not living up to your potential.",
         "You're feeling like you're not being heard or understood.",
         "You're feeling like you're not in control of your life.",
-        "You're feeling like you're not making a difference in the world."
+        "You're feeling like you're not making a difference in the world.",
+        "You are diagnosed with a chronic illness.",
+        "A close family member passes away unexpectedly.",
+        "You lose your job and are facing financial instability.",
+        "You are betrayed by a close friend or partner.",
+        "You witness a traumatic event.",
+        "You are a victim of discrimination or prejudice.",
+        "You are struggling with addiction.",
+        "You are facing a moral dilemma with no clear right answer.",
+        "You are responsible for a major mistake at work that has serious consequences.",
+        "You are feeling completely alone and have no one to turn to."
     ];
 
     function showScreen(screen) {
@@ -106,21 +117,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function nextTurn() {
-        currentPlayer = (currentPlayer + 1) % playerCount;
-        if (currentPlayer === 0) {
-            currentRound++;
+        const winner = scores.findIndex(score => score >= 10);
+        if (winner !== -1) {
+            endGame(winner);
+            return;
         }
 
-        if (currentRound >= rounds) {
-            endGame();
-        } else {
-            displays.turn.textContent = `Player ${currentPlayer + 1}'s Turn`;
-        }
+        currentPlayer = (currentPlayer + 1) % playerCount;
+        displays.turn.textContent = `Player ${currentPlayer + 1}'s Turn`;
     }
 
-    function endGame() {
+    function endGame(winner) {
         showScreen(screens.win);
-        displays.finalScores.innerHTML = '';
+        displays.finalScores.innerHTML = `<h2>Player ${winner + 1} Wins!</h2>`;
         scores.forEach((score, i) => {
             const finalScore = document.createElement('p');
             finalScore.textContent = `Player ${i + 1}: ${score}`;
@@ -132,7 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
         playerCount = parseInt(inputs.playerCount.value);
         scores = new Array(playerCount).fill(0);
         currentPlayer = 0;
-        currentRound = 0;
         updateScores();
         showScreen(screens.game);
         displays.turn.textContent = `Player ${currentPlayer + 1}'s Turn`;
@@ -144,7 +152,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     buttons.drawCard.addEventListener('click', () => {
         const cardIndex = Math.floor(Math.random() * cardDescriptions.length);
+        const colorIndex = Math.floor(Math.random() * cardColors.length);
         displays.card.textContent = cardDescriptions[cardIndex];
+        displays.card.style.backgroundColor = cardColors[colorIndex];
         document.getElementById('prompt-message').textContent = `Player ${currentPlayer + 1}, share how you would deal with and cope with this situation with the other players. Press OK when you are ready for others to vote.`;
         showModal(modals.prompt);
     });

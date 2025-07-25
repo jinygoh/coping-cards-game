@@ -5,21 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coping Cards</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="start-screen" class="screen active">
         <h1>Coping Cards</h1>
         <button id="start-game-btn">Start Game</button>
         <button id="how-to-play-btn">How to Play</button>
-        <div class="player-selector">
+        <div class="player-selector" style="margin-top: 30px;">
             <label for="player-count">Number of Players:</label>
-            <select id="player-count">
+            <select id="player-count" class="player-count-select">
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4" selected>4</option>
                 <option value="5">5</option>
                 <option value="6">6</option>
             </select>
+        </div>
+        <div class="summary">
+            <p>Coping Cards is a game that helps you practice your coping skills. On each turn, a player will draw a card with a difficult situation. All players will then share how they would cope with the situation. The players will then vote on whose coping mechanism was the best, and the winner of the round gets a point. The first player to 10 points wins!</p>
         </div>
     </div>
 
@@ -36,10 +42,10 @@
             <h2>How to Play</h2>
             <ul>
                 <li><strong>Setup:</strong> Choose the number of players (2-6). Everyone will share one computer.</li>
-                <li><strong>Drawing a Card:</strong> On your turn, click 'Draw Card' to reveal a difficult situation.</li>
-                <li><strong>Share Your Coping:</strong> Verbally explain to the other players how you would deal with and cope with the situation on the card.</li>
-                <li><strong>Vote:</strong> After sharing, the other players will discuss and vote on whose coping mechanism was the best. The player who shared gets 1 point if their coping mechanism is chosen.</li>
-                <li><strong>Winning:</strong> The player with the most points at the end of the game wins!</li>
+                <li><strong>Drawing a Card:</strong> On each turn, one player will click 'Draw Card' to reveal a difficult situation.</li>
+                <li><strong>Share Your Coping:</strong> All players will verbally explain to each other how they would deal with and cope with the situation on the card.</li>
+                <li><strong>Vote:</strong> After sharing, the players will discuss and vote on whose coping mechanism was the best. The player who is voted for gets 1 point.</li>
+                <li><strong>Winning:</strong> The first player to reach 10 points wins the game!</li>
             </ul>
         </div>
     </div>
@@ -54,7 +60,7 @@
     <div id="vote-modal" class="modal">
         <div class="modal-content">
             <p id="vote-message"></p>
-            <button id="vote-complete-btn">Vote Complete</button>
+            <div id="player-buttons"></div>
         </div>
     </div>
 

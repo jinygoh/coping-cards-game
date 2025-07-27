@@ -2,10 +2,10 @@
 
 ## Original Prompt
 
-Coping Cards Game for CrazyGames
-Here's a detailed prompt for an AI coding agent to develop your card game for CrazyGames, focusing on a single-computer, shared-screen experience:
-Game Title: Coping Cards (or a similar suitable title – the agent can suggest variations)
-Core Concept: A social card game where players draw cards describing difficult situations and verbally share their coping mechanisms. Players then vote on the best coping strategy. Designed for local multiplayer on a single computer.
+Deep Conversation Topics
+Here's a detailed prompt for an AI coding agent to develop your card game, focusing on a single-computer, shared-screen experience:
+Game Title: Deep Conversation Topics
+Core Concept: A deck of cards with deep conversation topics for 2 strangers to get to know each other on a very deep level to skip the small talk.
 Target Platform: CrazyGames (web-based, HTML5/JavaScript preferred for broad compatibility and ease of deployment).
 Player Count: 2-6 players (adjustable in-game if possible, default to 4 for initial testing).
 Game Flow & Mechanics:
